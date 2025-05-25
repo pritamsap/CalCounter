@@ -15,7 +15,7 @@ struct FoodMealCard: View {
         HStack(spacing: 16) {
                     // SF Symbol
                     Image(systemName: "takeoutbag.and.cup.and.straw.fill")
-                        .font(.system(size: 32))
+                        .font(.system(size: 28))
                         .foregroundColor(.red)
 
                     // Title and Subtitle
@@ -37,6 +37,7 @@ struct FoodMealCard: View {
                 )
                 .shadow(radius: 0.5)
                 .padding(.horizontal)
+                .padding(.vertical, 3)
     }
 }
 
