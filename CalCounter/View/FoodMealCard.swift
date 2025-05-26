@@ -42,5 +42,5 @@ struct FoodMealCard: View {
 }
 
 #Preview {
-    FoodMealCard(item: FoodModel(foodName: "Sandwich", calories: 250, foodLogo: "Apple"))
+    FoodMealCard(item: FoodModel(foodName: "Sandwich", calories: 250, foodLogo: "Apple", date: Date()))
 }

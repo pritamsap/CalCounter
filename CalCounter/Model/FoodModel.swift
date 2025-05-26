@@ -13,4 +13,5 @@ struct FoodModel: Identifiable, Codable {
     var foodName: String
     var calories: Int
     var foodLogo: String
+    var date: Date
 }

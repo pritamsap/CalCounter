@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import Charts
 
 struct HomeView: View {
     
@@ -15,6 +16,8 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
+            
+            
             VStack(alignment: .leading) {
                 Text("Add Meal")
                         .font(.headline)
@@ -33,40 +36,70 @@ struct HomeView: View {
                       .background(Color(.secondarySystemBackground))
                       .cornerRadius(10)
                 
+                DatePicker("Select Date", selection: $viewModel.newDate, displayedComponents: .date)
+
+                
                 // Add Meal Button
+                
                    Button(action: {
                        viewModel.addItem()
                        UIApplication.shared.hideKeyboard()
                    }) {
-                       Text("Add Meal")
+                       Text("Add")
                            .frame(maxWidth: .infinity)
                            .padding()
                            .background(Color.blue)
                            .foregroundColor(.white)
                            .cornerRadius(10)
-                   }
+                   }.padding(.vertical)
                 
                 
                 
                 VStack(alignment: .leading) {
-                    Text("Today's Meals: \(viewModel.netCalories) calories")
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 0.5) {
-                                ForEach(viewModel.items) { item in
-                                    FoodMealCard(item: item)
+                    ForEach(viewModel.dayCalories) { item in
+                        Text("\(viewModel.dateFormatter.string(from: item.date)): \(item.netCalories) calories")
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0.5) {
+                                ForEach(viewModel.meals(for: item.date)) { food in
+                                    FoodMealCard(item: food)
                                 }
                             }
                             .padding(.vertical, 4)
                         }
+                    }
+
+
+                    
 
                 }.padding(.vertical, 20)
                 Spacer()
+                
+//                Chart(viewModel.dayCalories) { entry in
+//                    BarMark(
+//                        x: .value("Date", entry.date, unit: .day),
+//                        y: .value("Calories", entry.netCalories)
+//                    )
+//                    .foregroundStyle(.blue)
+//                }
+//                .chartXAxis {
+//                    AxisMarks(values: .stride(by: .day)) { value in
+//                        AxisGridLine()
+//                        AxisValueLabel(format: .dateTime.weekday(.abbreviated))
+//                    }
+//                }
+//                .frame(height: 200)
+//                .padding()
+
               
                 
                 
                 
                 
             }.padding()
+            .navigationTitle("Cal Counter")
+            .navigationBarTitleDisplayMode(.inline)
+
         }
     }
 }
