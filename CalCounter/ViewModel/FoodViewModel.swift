@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+
+/// View Model to initialize default storage, for saving each meal and net calorie accountable for each day 
 @Observable
 class FoodViewModel {
     var items: [FoodModel] = []

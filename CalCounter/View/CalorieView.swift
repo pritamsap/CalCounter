@@ -71,24 +71,6 @@ struct CalorieView: View {
                     }.padding(.vertical, 20)
                     Spacer()
                     
-                    
-                    
-                    //                Chart(viewModel.dayCalories) { entry in
-                    //                    BarMark(
-                    //                        x: .value("Date", entry.date, unit: .day),
-                    //                        y: .value("Calories", entry.netCalories)
-                    //                    )
-                    //                    .foregroundStyle(.blue)
-                    //                }
-                    //                .chartXAxis {
-                    //                    AxisMarks(values: .stride(by: .day)) { value in
-                    //                        AxisGridLine()
-                    //                        AxisValueLabel(format: .dateTime.weekday(.abbreviated))
-                    //                    }
-                    //                }
-                    //                .frame(height: 200)
-                    //                .padding()
-                    
                 }.padding()
             }
             
