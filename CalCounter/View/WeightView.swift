@@ -26,7 +26,7 @@ struct WeightView: View {
                     // Weight Field - Manual Binding
                     TextField("Weight", text: Binding(
                         get: { String(weightViewModel.currentWeight) },
-                        set: { weightViewModel.currentWeight = Double($0) ?? 0.0 }
+                        set: { weightViewModel.currentWeight = Double($0) ?? 0 }
                     ))
                     .keyboardType(.decimalPad)
                     .padding()
@@ -76,7 +76,7 @@ struct WeightView: View {
                             x: .value("Date", entry.date),
                             y: .value("Weight", entry.weight)
                         )
-                        .symbolSize(30) // smaller dot if you want a subtle look
+                        .symbolSize(30)
                     }
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .day)) { value in
@@ -87,7 +87,7 @@ struct WeightView: View {
                     .chartYAxis {
                         AxisMarks(position: .leading)
                     }
-                    .chartYScale(domain: 0...200) // adjust based on your weight range
+                    .chartYScale(domain: 0...200)
                     .frame(height: 250)
                     .padding()
 

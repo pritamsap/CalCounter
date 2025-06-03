@@ -54,6 +54,18 @@ struct CalorieView: View {
                     }.padding(.vertical)
                     
                     
+                    // Calorie Scan View
+                    NavigationLink(destination: CalorieScannerViewCard()) {
+                                      Text("Scan Calorie")
+                                          .font(.headline)
+                                          .padding()
+                                          .frame(maxWidth: .infinity)
+                                          .background(Color.blue)
+                                          .foregroundColor(.white)
+                                          .cornerRadius(10)
+                                  }
+                    
+                    
                     // Display Food Meal for Each Corresponding day
                     VStack(alignment: .leading) {
                         ForEach(viewModel.dayCalories) { item in
@@ -70,6 +82,8 @@ struct CalorieView: View {
                         }
                     }.padding(.vertical, 20)
                     Spacer()
+                    
+                   
                     
                 }.padding()
             }
